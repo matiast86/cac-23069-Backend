@@ -13,7 +13,7 @@ public class Producto {
     private String autor;
     private long id;
     private LocalDate fecha;
-    private String codigo;
+    public String codigo;
 
     //constructor/es
     public Producto(String titulo, String autor, double precio, String imagen, int id,String codigo) {

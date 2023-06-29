@@ -7,9 +7,9 @@ public class Libro extends Producto {
     private String isbn;
 
     //constructor
-    public Libro(String titulo, String autor, double precio, String imagen, int id,String isbn) {
+    public Libro(String titulo, String autor, double precio, String imagen, int id, String isbn) {
         //super = padre
-        super(titulo, autor, precio, imagen, id, isbn);//invocar el constructor del padre => nace el padre
+        super(titulo, autor, precio, imagen, id, "");//invocar el constructor del padre => nace el padre
         //ahora puede nacer el hijo
         this.isbn = isbn;
     }

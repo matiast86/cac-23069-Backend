@@ -19,7 +19,7 @@ public class AdministradorDeConexiones {
 		String driverClassName = "com.mysql.cj.jdbc.Driver";
 		
 		//nombre de la base de datos
-		String dbName = "23049-db";
+		String dbName = "23069-db";
 		
 		//NO VOY A EXPLICAR TRY CATCH, SOLO LO VAMOS A USAR
 		Connection connection;
