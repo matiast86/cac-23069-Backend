@@ -1,20 +1,28 @@
 package ar.com.codoacodo.controllers;
 
+import java.io.IOException;
+
 import ar.com.codoacodo.dao.DAO;
 import ar.com.codoacodo.dao.impl.MysqlDaoImpl;
 import ar.com.codoacodo23069.Producto;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
-public class AltaProductoController {
+@WebServlet("/AltaProductoController")
+public class AltaProductoController extends HttpServlet{
  
-    //asumimos que es creado por la jvm! 
-    public void doPost(Request request,Response response) {
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         //asumimos que aca llegan lo parametros desde el formulario
-        String titulo = "harry potter3 ";//request.getTitulo();
-        String autor = "autor de harry potter3";
-        double precio = 1500.5;
+        String titulo = req.getParameter("nombre");//request.getTitulo();
+        String autor = req.getParameter("autor");
+        double precio = Double.parseDouble(req.getParameter("precio"));
         String imagen = "http://bla.com.ar/algo.jpg";
-        String codigo = "ZZZ002";
+        String codigo = req.getParameter("codigo");
 
         //ahora nace el producto EN JVM, pero no existe en la DB!
         //NO INSERT INTO....
@@ -26,7 +34,7 @@ public class AltaProductoController {
         DAO dao = new MysqlDaoImpl();
         
         try {
-            dao.create(nuevoProducto);//f5
+            dao.create(nuevoProducto);//manejo de errores en java: try/catch/finally >  Spring
         } catch (Exception e) {
             e.printStackTrace();
         }
