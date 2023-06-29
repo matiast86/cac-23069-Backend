@@ -10,11 +10,11 @@ public class AltaProductoController {
     public void doPost(Request request,Response response) {
 
         //asumimos que aca llegan lo parametros desde el formulario
-        String titulo = "harry potter ";//request.getTitulo();
-        String autor = "autor de harry potter";
+        String titulo = "harry potter3 ";//request.getTitulo();
+        String autor = "autor de harry potter3";
         double precio = 1500.5;
         String imagen = "http://bla.com.ar/algo.jpg";
-        String codigo = "ZZZ000";
+        String codigo = "ZZZ002";
 
         //ahora nace el producto EN JVM, pero no existe en la DB!
         //NO INSERT INTO....
