@@ -11,7 +11,7 @@ public class AdministradorDeConexiones {
 	*/
 	public static Connection getConnection() {
 		String hosts = "127.0.0.1";//localhost
-		String port = "33060";
+		String port = "3306";
 		String password = "root";
 		String username = "root";
 		

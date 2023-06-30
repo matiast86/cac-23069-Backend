@@ -9,7 +9,7 @@ public class App
         //creo el controller
         AltaProductoController controller = new AltaProductoController();//f6
 
-        controller.doPost(null, null);//f5
+        //controller.doPost(null, null);//f5
 
         System.out.println("fin");
     }
