@@ -7,13 +7,13 @@ import java.time.LocalDate;//api de fecha de java
 public class Producto {
     
     //atributos
-    private String imagen; // - 
-    private double precio;
-    private String titulo;
-    private String autor;
     private long id;
+    private String titulo;
+    private double precio;
+    private String imagen; // - 
     private LocalDate fecha;
     public String codigo;
+    private String autor;
 
     //constructor/es
     public Producto(String titulo, String autor, double precio, String imagen, int id,String codigo) {
@@ -97,5 +97,9 @@ public class Producto {
 
     public void setCodigo(String codigo) {
         this.codigo = codigo;
+    }
+
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
     }
 }
