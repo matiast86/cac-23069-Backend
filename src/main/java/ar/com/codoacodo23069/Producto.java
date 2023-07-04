@@ -15,11 +15,19 @@ public class Producto {
     public String codigo;
     private String autor;
 
+    
+
     //constructor/es
-    public Producto(String titulo, String autor, double precio, String imagen, int id,String codigo) {
+    /*public Producto(String titulo, String autor, double precio, String imagen, int id,String codigo) {
         //nace con estos valores
         this.id = id;
 
+        init(titulo, autor, precio, imagen, codigo);
+    }*/
+
+    public Producto(long id, String titulo, double precio, String imagen, LocalDate fecha, String codigo,
+            String autor) {
+        this.id = id;
         init(titulo, autor, precio, imagen, codigo);
     }
 

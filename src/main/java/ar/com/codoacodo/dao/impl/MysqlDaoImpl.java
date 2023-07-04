@@ -1,16 +1,17 @@
 package ar.com.codoacodo.dao.impl;
 
-import java.util.ArrayList;
-
-import ar.com.codoacodo.dao.AdministradorDeConexiones;
-import ar.com.codoacodo.dao.DAO;
-import ar.com.codoacodo23069.Producto;
-
 import java.sql.Connection;//es una interface de JDBC que está implementado en el conector=driver=depedencia=artefacto=libreria de mysql
 import java.sql.Date;
 //que agregamos al pom.xml
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.ArrayList;
+
+import ar.com.codoacodo.dao.AdministradorDeConexiones;
+import ar.com.codoacodo.dao.DAO;
+import ar.com.codoacodo23069.Producto;
 
 /* implemento el contrato = interface DAO
  * 
@@ -28,8 +29,7 @@ public class MysqlDaoImpl implements DAO{
 
         //ahora seteo los valores 
         pst.setString(1, producto.getTitulo());
-        //pst.setDate(2, producto.getFecha().g);//??
-        pst.setDate(2, new Date(System.currentTimeMillis()));//??
+        pst.setDate(2, dateFrom(producto.getFecha()));        
         pst.setString(3, producto.getAutor());
         pst.setString(4, producto.getCodigo());
         pst.setString(5, producto.getImagen());
@@ -46,8 +46,14 @@ public class MysqlDaoImpl implements DAO{
 
     @Override
     public void delete(Long id) throws Exception{
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+        Connection connection = AdministradorDeConexiones.getConnection();//f5
+ 
+        String sql = "delete from productos where id = ?";
+        PreparedStatement pst = connection.prepareStatement(sql);
+
+        pst.setLong(1, id);
+
+        pst.executeUpdate();//insert/update/delete
     }
 
     @Override
@@ -67,15 +73,21 @@ public class MysqlDaoImpl implements DAO{
             //aca uds hace la magia
             Long id =res.getLong(1);
             String titulo = res.getString(2);
-            String img = res.getString(3);
-            Date fecha = res.getDate(4);
-            String codigo = res.getString(5);
-            String autor = res.getString(6);
+            double precio = res.getDouble(3);
+            String img = res.getString(4);
+            Date fecha = res.getDate(5);
+            String codigo = res.getString(6);
+            String autor = res.getString(7);
             
-            listado.add(new Producto(titulo, autor, 0, img, codigo));
+            listado.add(new Producto(id, titulo, precio, img, fecha.toLocalDate(), codigo, autor));
         }
 
         return listado;
+    }
+
+    private Date dateFrom(LocalDate ldt) {
+        java.util.Date date = Date.from(ldt.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        return new java.sql.Date(date.getTime());
     }
 
     @Override

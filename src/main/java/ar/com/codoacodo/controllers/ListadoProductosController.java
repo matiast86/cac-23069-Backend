@@ -28,9 +28,12 @@ public class ListadoProductosController extends HttpServlet{
             req.setAttribute("listado", productos);
 
             //ahora anda a la vista listado.jsp
-            req.getRequestDispatcher("listado.jsp").forward(req, resp);
+            req.getRequestDispatcher("listado.jsp").forward(req, resp);//interna!!!
         } catch (Exception e) {
-            req.getRequestDispatcher("index.jsp").forward(req, resp);
+            e.printStackTrace();
+
+            req.setAttribute("listado", new ArrayList<>());
+            req.getRequestDispatcher("listado.jsp").forward(req, resp);//interna!!!
         }
     }
 }
