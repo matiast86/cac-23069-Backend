@@ -36,4 +36,8 @@ public class ListadoProductosController extends HttpServlet{
             req.getRequestDispatcher("listado.jsp").forward(req, resp);//interna!!!
         }
     }
+
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doGet(req, resp);
+    }
 }

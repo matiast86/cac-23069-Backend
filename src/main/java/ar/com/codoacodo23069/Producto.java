@@ -1,4 +1,4 @@
-//paquete: agrupa clases
+//paquete: agrupo clases
 package ar.com.codoacodo23069;
 
 import java.time.LocalDate;//api de fecha de java
@@ -12,10 +12,9 @@ public class Producto {
     private double precio;
     private String imagen; // - 
     private LocalDate fecha;
-    public String codigo;
+    private String codigo;
     private String autor;
 
-    
 
     //constructor/es
     /*public Producto(String titulo, String autor, double precio, String imagen, int id,String codigo) {
@@ -97,7 +96,6 @@ public class Producto {
     public LocalDate getFecha() {
         return this.fecha;
     }
-    //no implementamos el setter de fecha!!
 
     public String getCodigo() {
         return codigo;
@@ -106,8 +104,6 @@ public class Producto {
     public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
-
-    public void setFecha(LocalDate fecha) {
-        this.fecha = fecha;
-    }
+    
+    //no implementamos el setter de fecha!!
 }
