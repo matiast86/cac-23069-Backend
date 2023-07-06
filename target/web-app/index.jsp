@@ -6,6 +6,6 @@
 <body>
     <jsp:include page="navbar.jsp"></jsp:include>
 
-    <jsp:include page="styles.jsp"></jsp:include>
+    <jsp:include page="scripts.jsp"></jsp:include>
 </body>
 </html>
