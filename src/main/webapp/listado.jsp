@@ -32,16 +32,17 @@
                 <%
                 }
                 %>
-                <table class="table">
+                <table class="table" id="table">
                     <thead>
-                    <tr>
+                    <tr class="table-success">
                         <th scope="col">#</th>
-                        <th scope="col">TÍTULO</th>
+                        <th scope="col">TITULO</th>
                         <th scope="col">PRECIO</th>
-                        <th scope="col">CÓDIGO</th>
+                        <th scope="col">CODIGO</th>
                         <th scope="col">AUTOR</th>
-                        <th scope="col">IMÁGEN</th>
-                        <th scope="col">------</th>
+                        <th scope="col">FECHA</th>
+                        <th scope="col">ELIMINAR</th>
+                        <th scope="col">EDITAR</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -50,7 +51,7 @@
                         ArrayList<Producto> listado = (ArrayList<Producto>)request.getAttribute("listado");//[]
                         for(Producto unarticulo : listado) {
                         %>
-                            <tr>
+                            <tr class="table-warning">
                                 <th scope="row"><%=unarticulo.getId()%></th>
                                 <td><%=unarticulo.getTitulo()%></td>
                                 <td><%=unarticulo.getPrecio()%></td>
@@ -64,6 +65,15 @@
                                         role="button"
                                         aria-disabled="true">
                                         Eliminar
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="modificarTabla.jsp" 
+                                        class="btn btn-primary" 
+                                        tabindex="-1"
+                                        role="button"
+                                        aria-disabled="true">
+                                        Editar
                                     </a>
                                 </td>
                             </tr>
