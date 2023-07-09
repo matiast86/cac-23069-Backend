@@ -7,4 +7,7 @@
     #table {
         margin-top: 20px;
     }
+    #Alta {
+        margin-top: 20px;
+    }
 </style>
