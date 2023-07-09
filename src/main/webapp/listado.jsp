@@ -5,11 +5,6 @@
 <html lang="en">
 <head>
     <jsp:include page="styles.jsp"></jsp:include>
-    <style>
-        #table {
-            margin-top: 20px;
-        }
-    </style>
 </head>
     <body>
     <jsp:include page="navbar.jsp"></jsp:include>
