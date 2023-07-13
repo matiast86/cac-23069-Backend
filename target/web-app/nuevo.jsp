@@ -5,7 +5,7 @@
 </head>
     <body>
     <jsp:include page="navbar.jsp"></jsp:include>
-        <div class="container">
+        <div class="container" id="Alta">
             <div class="row">
                 <div class="col-12">
                     <section>

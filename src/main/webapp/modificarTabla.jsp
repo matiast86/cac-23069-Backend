@@ -1,3 +1,4 @@
+<%@ page import="ar.com.codoacodo23069.Producto" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +20,11 @@
                         <!--<%=request.getContextPath()%> se convierte en el contexto
                         /web-app
                         -->
-                        <form method="post" action="<%=request.getContextPath()%>/AltaProductoController">
+                        <% 
+                        //bajo el dato del request, que guardo el controller
+                        Producto producto = (Producto)request.getAttribute("producto");//[]
+                        %>
+                        <form method="post" action="<%=request.getContextPath()%>/EditarProductoController?id=<%=producto.getId()%>">
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" 
                                     class="form-label">Nombre</label>

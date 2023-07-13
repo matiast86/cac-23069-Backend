@@ -40,8 +40,32 @@ public class MysqlDaoImpl implements DAO{
 
     @Override
     public Producto getById(Long id) throws Exception{
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getById'");
+        
+        Connection connection = AdministradorDeConexiones.getConnection();//f5
+        
+        //ahora si armo el sql para hacer un INSERT                                      1  2  3  4  5
+        String sql = "select * from productos where id=?";
+        PreparedStatement pst = connection.prepareStatement(sql);
+        pst.setLong(1,id);
+        
+        ResultSet res =  pst.executeQuery();
+        
+        Producto producto = null;
+        //extraer los datos del res!
+        if(res.next()) {
+            //aca uds hace la magia
+            Long _id =res.getLong(1);
+            String titulo = res.getString(2);
+            double precio = res.getDouble(3);
+            String img = res.getString(4);
+            Date fecha = res.getDate(5);
+            String codigo = res.getString(6);
+            String autor = res.getString(7);
+            
+            producto = new Producto(_id, titulo, precio, img, fecha.toLocalDate(), codigo, autor);
+        }
+
+        return producto;
     }
 
     @Override
@@ -91,8 +115,20 @@ public class MysqlDaoImpl implements DAO{
     }
 
     @Override
-    public void update(Producto articulo) throws Exception{
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+    public void update(Producto producto) throws Exception{
+        
+        Connection connection = AdministradorDeConexiones.getConnection();
+        
+        String sql = "update productos set titulo = ?, precio = ?, imagen = ?, codigo = ?, autor = ? where id = ?";
+        PreparedStatement pst = connection.prepareStatement(sql);
+
+        pst.setString(1, producto.getTitulo());
+        pst.setDate(2, dateFrom(producto.getFecha()));        
+        pst.setString(3, producto.getAutor());
+        pst.setString(4, producto.getCodigo());
+        pst.setString(5, producto.getImagen());
+
+        pst.executeUpdate();
+
     }
 }

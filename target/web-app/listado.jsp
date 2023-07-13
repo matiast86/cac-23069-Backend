@@ -68,7 +68,7 @@
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="modificarTabla.jsp" 
+                                    <a href="<%=request.getContextPath()%>/EditarProductoController?id=<%=unarticulo.getId()%>" 
                                         class="btn btn-primary" 
                                         tabindex="-1"
                                         role="button"
