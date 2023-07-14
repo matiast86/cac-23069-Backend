@@ -30,25 +30,30 @@ public class EditarProductoController extends HttpServlet {
         
     }
 
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws SecurityException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws SecurityException, IOException, ServletException {
 
-        String nuevoTitulo = req.getParameter("nombre");//request.getTitulo();
-        String nuevoAutor = req.getParameter("autor");
-        double nuevoPrecio = Double.parseDouble(req.getParameter("precio"));
-        String nuevaImagen = req.getParameter("imagen");
-        String nuevoCodigo = req.getParameter("codigo");
+        String id = req.getParameter("id");
+        
+        String tituloModificado = req.getParameter("nombre");
+        String autorModificado = req.getParameter("autor");
+        double precioModificado = Double.parseDouble(req.getParameter("precio"));
+        String imagenModificada = req.getParameter("imagen");
+        String codigoModificado = req.getParameter("codigo");
 
-        Producto productoEditado = new Producto(nuevoTitulo, nuevoAutor, nuevoPrecio, nuevaImagen, nuevoCodigo);
+        Producto productoEditado = new Producto(tituloModificado, autorModificado, precioModificado, imagenModificada, codigoModificado);
 
         DAO dao = new MysqlDaoImpl();
 
         try {
             dao.update(productoEditado);
-            getServletContext().getRequestDispatcher("ListadoProductoController").forward(req, resp);
+
+            req.setAttribute("Productomodificado", "Se ha modificado el producto id:" + id);
+            getServletContext().getRequestDispatcher("/ListadoProductosController").forward(req, resp);
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-            getServletContext().getRequestDispatcher("modificarTabla.jsp");
+            req.setAttribute("Productonomodificado", "No se ha modificado el producto id:" + id);
+            getServletContext().getRequestDispatcher("/ListadoProductosController").forward(req, resp);
         }
 
     }

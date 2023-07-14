@@ -24,19 +24,21 @@ public class MysqlDaoImpl implements DAO{
         Connection connection = AdministradorDeConexiones.getConnection();//f5
         
         //ahora si armo el sql para hacer un INSERT                                      1  2  3  4  5
-        String sql = "INSERT INTO productos (titulo, fecha, autor,codigo,imagen) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO productos (titulo, precio, fecha, autor,codigo,imagen) VALUES (?, ?, ?, ?, ?, ?)";
         PreparedStatement pst = connection.prepareStatement(sql);
 
         //ahora seteo los valores 
         pst.setString(1, producto.getTitulo());
-        pst.setDate(2, dateFrom(producto.getFecha()));        
-        pst.setString(3, producto.getAutor());
-        pst.setString(4, producto.getCodigo());
-        pst.setString(5, producto.getImagen());
+        pst.setDouble(2, producto.getPrecio());
+        pst.setDate(3, dateFrom(producto.getFecha()));        
+        pst.setString(4, producto.getAutor());
+        pst.setString(5, producto.getCodigo());
+        pst.setString(6, producto.getImagen());
 
         pst.executeUpdate();
         //ResultSet
     }
+
 
     @Override
     public Producto getById(Long id) throws Exception{
@@ -115,18 +117,20 @@ public class MysqlDaoImpl implements DAO{
     }
 
     @Override
-    public void update(Producto producto) throws Exception{
+    public void update(Producto productoEditado) throws Exception{
         
         Connection connection = AdministradorDeConexiones.getConnection();
         
-        String sql = "update productos set titulo = ?, precio = ?, imagen = ?, codigo = ?, autor = ? where id = ?";
+        String sql = "update productos set titulo = ?, precio = ?, imagen = ?, fecha = ?, codigo = ?, autor = ? where id = ?";
         PreparedStatement pst = connection.prepareStatement(sql);
 
-        pst.setString(1, producto.getTitulo());
-        pst.setDate(2, dateFrom(producto.getFecha()));        
-        pst.setString(3, producto.getAutor());
-        pst.setString(4, producto.getCodigo());
-        pst.setString(5, producto.getImagen());
+        pst.setString(1, productoEditado.getTitulo());
+        pst.setDouble(2, productoEditado.getPrecio());
+        pst.setString(3, productoEditado.getImagen());
+        pst.setDate(4, dateFrom(productoEditado.getFecha()));        
+        pst.setString(5, productoEditado.getCodigo());
+        pst.setString(6, productoEditado.getAutor());
+        pst.setLong(7, productoEditado.getId());
 
         pst.executeUpdate();
 

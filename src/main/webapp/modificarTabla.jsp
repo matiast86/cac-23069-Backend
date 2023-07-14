@@ -1,3 +1,4 @@
+<%@ page import="java.util.ArrayList" %>
 <%@ page import="ar.com.codoacodo23069.Producto" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,6 +34,7 @@
                                     class="form-control" 
                                     id="exampleFormControlInput1"
                                     placeholder="Nombre"
+                                    value="<%=producto.getTitulo()%>"
                                     maxlength="50">
                             </div>
                             <div class="mb-3">
@@ -42,6 +44,7 @@
                                 <input name="precio" 
                                     type="number" 
                                     class="form-control" 
+                                    value="<%=producto.getPrecio()%>"
                                     id="exampleFormControlTextarea1">
                             </div>
                             <div class="mb-3">
@@ -58,7 +61,8 @@
                                     class="form-label">C&oacute;digo
                                 </label>
                                 <input name="codigo" 
-                                    type="text" 
+                                    type="text"
+                                    value="<%=producto.getCodigo()%>" 
                                     class="form-control" 
                                     id="exampleFormControlTextarea1" 
                                     maxlength="7">
@@ -68,7 +72,8 @@
                                     class="form-label">Autor
                                 </label>
                                 <input name="autor" 
-                                    type="text" 
+                                    type="text"
+                                    value="<%=producto.getAutor()%>" 
                                     class="form-control" 
                                     id="autor" 
                                     maxlength="50">

@@ -11,8 +11,8 @@
         <div class="container">
         <div class="row">
             <div class="col-12">
-                <% String ok = (String)request.getAttribute("aliminadook");%>
-                <% String fail = (String)request.getAttribute("aliminadofail");%>
+                <% String ok = (String)request.getAttribute("Eliminadook");%>
+                <% String fail = (String)request.getAttribute("Eliminadofail");%>
 
                 <%
                 if(ok != null) {
@@ -28,6 +28,27 @@
                 %>
                     <div class="alert alert-danger">
                         error
+                    </div>
+                <%
+                }
+                %>
+                <% String modificado = (String)request.getAttribute("Productomodificado");%>
+                <% String mantiene = (String)request.getAttribute("Productonomodificado");%>
+
+                <%
+                if(modificado != null) {
+                %>
+                    <div class="alert alert-success">
+                        El producto se ha modificado con exito.
+                    </div>
+                <%
+                }
+                %>
+                <%
+                if(mantiene != null) {
+                %>
+                    <div class="alert alert-danger">
+                        ERROR: El producto no se ha podido modificar.
                     </div>
                 <%
                 }

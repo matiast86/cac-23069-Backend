@@ -21,7 +21,7 @@ public class AltaProductoController extends HttpServlet{
         String titulo = req.getParameter("nombre");//request.getTitulo();
         String autor = req.getParameter("autor");
         double precio = Double.parseDouble(req.getParameter("precio"));
-        String imagen = "http://bla.com.ar/algo.jpg";
+        String imagen = req.getParameter("imagen");
         String codigo = req.getParameter("codigo");
 
         //ahora nace el producto EN JVM, pero no existe en la DB!
