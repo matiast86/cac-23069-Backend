@@ -122,6 +122,7 @@ public class MysqlDaoImpl implements DAO{
         Connection connection = AdministradorDeConexiones.getConnection();
         
         String sql = "update productos set titulo = ?, precio = ?, imagen = ?, fecha = ?, codigo = ?, autor = ? where id = ?";
+        
         PreparedStatement pst = connection.prepareStatement(sql);
 
         pst.setString(1, productoEditado.getTitulo());
@@ -132,6 +133,12 @@ public class MysqlDaoImpl implements DAO{
         pst.setString(6, productoEditado.getAutor());
         pst.setLong(7, productoEditado.getId());
 
+
+        System.out.println(productoEditado.getTitulo());
+        System.out.println(productoEditado.getPrecio());
+        System.out.println(productoEditado.getCodigo());
+        System.out.println(productoEditado.getAutor());
+        
         pst.executeUpdate();
 
     }

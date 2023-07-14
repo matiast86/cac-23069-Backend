@@ -58,7 +58,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="exampleFormControlTextarea1" 
-                                    class="form-label">C&oacute;digo
+                                    class="form-label">Codigo
                                 </label>
                                 <input name="codigo" 
                                     type="text"
