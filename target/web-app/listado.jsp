@@ -18,7 +18,7 @@
                 if(ok != null) {
                 %>
                     <div class="alert alert-success">
-                        exito
+                        El producto se ha eliminado con exito.
                     </div>
                 <%
                 }
@@ -27,7 +27,7 @@
                 if(fail != null) {
                 %>
                     <div class="alert alert-danger">
-                        error
+                        ERROR: El preducto no se ha podido eliminar de la base de datos.
                     </div>
                 <%
                 }

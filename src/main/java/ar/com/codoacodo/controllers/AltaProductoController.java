@@ -35,10 +35,10 @@ public class AltaProductoController extends HttpServlet{
         
         try {
             dao.create(nuevoProducto);//manejo de errores en java: try/catch/finally >  Spring
-            getServletContext().getRequestDispatcher("/ListadoProductosController.jsp");
+            getServletContext().getRequestDispatcher("/ListadoProductosController").forward(req, resp);
         } catch (Exception e) {
             e.printStackTrace();
-            getServletContext().getRequestDispatcher("nuevo.jsp");
+            getServletContext().getRequestDispatcher("nuevo.jsp").forward(req, resp);
         }
     }
 }

@@ -10,4 +10,8 @@
     #Alta {
         margin-top: 20px;
     }
+
+    #cards {
+        -ms-flex-align: center;
+    }
 </style>
