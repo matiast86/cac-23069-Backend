@@ -23,8 +23,8 @@ public class MysqlDaoImpl implements DAO{
         //vamos a ver la clase que viene JDBC
         Connection connection = AdministradorDeConexiones.getConnection();//f5
         
-        //ahora si armo el sql para hacer un INSERT                                      1  2  3  4  5
-        String sql = "INSERT INTO productos (titulo, precio, fecha, autor,codigo,imagen) VALUES (?, ?, ?, ?, ?, ?)";
+        //ahora si armo el sql para hacer un INSERT                                                1  2  3  4  5  6
+        String sql = "INSERT INTO productos (titulo, precio, fecha, autor, codigo, imagen) VALUES (?, ?, ?, ?, ?, ?)";
         PreparedStatement pst = connection.prepareStatement(sql);
 
         //ahora seteo los valores 

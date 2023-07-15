@@ -40,12 +40,19 @@ public class EditarProductoController extends HttpServlet {
         String imagenModificada = req.getParameter("imagen");
         String codigoModificado = req.getParameter("codigo");
 
-        Producto productoEditado = new Producto(tituloModificado, autorModificado, precioModificado, imagenModificada, codigoModificado);
-
+        
         DAO dao = new MysqlDaoImpl();
-
+        
         try {
+            Producto productoEditado = dao.getById(Long.parseLong(id));
+            productoEditado.setTitulo(tituloModificado);
+            productoEditado.setAutor(autorModificado);
+            productoEditado.setPrecio(precioModificado);
+            productoEditado.setImagen(imagenModificada);
+            productoEditado.setCodigo(codigoModificado);
+
             dao.update(productoEditado);
+            
 
             req.setAttribute("Productomodificado", "Se ha modificado el producto id:" + id);
             getServletContext().getRequestDispatcher("/ListadoProductosController").forward(req, resp);
